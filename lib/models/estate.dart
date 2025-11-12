@@ -10,6 +10,7 @@ class Estate {
   final String location;
   final StatusCategory status;
   final EstateTypeCategory estateType;
+  final List<String> imageUrls; // 🆕 added for remote images
 
   const Estate({
     required this.title,
@@ -23,6 +24,7 @@ class Estate {
     required this.location,
     required this.status,
     required this.estateType,
+    required this.imageUrls,
   });
 }
 
@@ -43,7 +45,7 @@ enum EstateTypeCategory {
   other,
 }
 
-// 🏡 Sample Local Data (3 examples for each estate type)
+// 🌍 SAMPLE DATA WITH REMOTE IMAGE URLs
 final List<Estate> estates = [
   // === LAND ===
   Estate(
@@ -58,6 +60,11 @@ final List<Estate> estates = [
     location: 'Ndera, Kigali',
     status: StatusCategory.forSale,
     estateType: EstateTypeCategory.land,
+    imageUrls: [
+      'https://images.unsplash.com/photo-1580587771525-78b9dba3b914',
+      'https://images.unsplash.com/photo-1523217582562-09d0def993a6',
+      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c',
+    ],
   ),
   Estate(
     title: 'Rwamagana Farm Land',
@@ -71,6 +78,10 @@ final List<Estate> estates = [
     location: 'Rwamagana, Rwanda',
     status: StatusCategory.sold,
     estateType: EstateTypeCategory.land,
+    imageUrls: [
+      'https://images.unsplash.com/photo-1526676037777-349b5be1e06b',
+      'https://images.unsplash.com/photo-1600585154207-3c9c8a7a3b36',
+    ],
   ),
   Estate(
     title: 'Nyamata Commercial Plot',
@@ -84,6 +95,9 @@ final List<Estate> estates = [
     location: 'Nyamata Town',
     status: StatusCategory.booked,
     estateType: EstateTypeCategory.land,
+    imageUrls: [
+      'https://images.unsplash.com/photo-1613977257362-3f3e5a2af61f',
+    ],
   ),
 
   // === CAR ===
@@ -99,6 +113,10 @@ final List<Estate> estates = [
     location: 'Remera, Kigali',
     status: StatusCategory.forSale,
     estateType: EstateTypeCategory.car,
+    imageUrls: [
+      'https://images.unsplash.com/photo-1603791452906-bb9cb1e9c24e',
+      'https://images.unsplash.com/photo-1617784556270-bc888dfd1a2e',
+    ],
   ),
   Estate(
     title: 'Land Cruiser Prado 2018',
@@ -112,6 +130,10 @@ final List<Estate> estates = [
     location: 'Kicukiro, Kigali',
     status: StatusCategory.sold,
     estateType: EstateTypeCategory.car,
+    imageUrls: [
+      'https://images.unsplash.com/photo-1601924579537-371e9b6ecb8b',
+      'https://images.unsplash.com/photo-1601924579773-2d52c4dbb7d0',
+    ],
   ),
   Estate(
     title: 'Suzuki Swift 2022',
@@ -125,6 +147,9 @@ final List<Estate> estates = [
     location: 'Gisozi, Kigali',
     status: StatusCategory.forRent,
     estateType: EstateTypeCategory.car,
+    imageUrls: [
+      'https://images.unsplash.com/photo-1605719125066-6f9a9a6e13b1',
+    ],
   ),
 
   // === HOUSE ===
@@ -140,6 +165,10 @@ final List<Estate> estates = [
     location: 'Nyarutarama, Kigali',
     status: StatusCategory.forSale,
     estateType: EstateTypeCategory.house,
+    imageUrls: [
+      'https://images.unsplash.com/photo-1600585154154-3d7f0bb0a3fa',
+      'https://images.unsplash.com/photo-1613977257132-9b63b1f13b8f',
+    ],
   ),
   Estate(
     title: 'Bungalow in Gisozi',
@@ -153,6 +182,9 @@ final List<Estate> estates = [
     location: 'Gisozi, Kigali',
     status: StatusCategory.booked,
     estateType: EstateTypeCategory.house,
+    imageUrls: [
+      'https://images.unsplash.com/photo-1580587771525-78b9dba3b914',
+    ],
   ),
   Estate(
     title: 'Family House in Kicukiro',
@@ -166,6 +198,10 @@ final List<Estate> estates = [
     location: 'Kicukiro, Kigali',
     status: StatusCategory.forRent,
     estateType: EstateTypeCategory.house,
+    imageUrls: [
+      'https://images.unsplash.com/photo-1615874959474-d609969a20ed',
+      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c',
+    ],
   ),
 
   // === APARTMENT ===
@@ -181,6 +217,9 @@ final List<Estate> estates = [
     location: 'City Center, Kigali',
     status: StatusCategory.forRent,
     estateType: EstateTypeCategory.apartment,
+    imageUrls: [
+      'https://images.unsplash.com/photo-1600585154154-3d7f0bb0a3fa',
+    ],
   ),
   Estate(
     title: 'Kacyiru Apartment',
@@ -194,6 +233,9 @@ final List<Estate> estates = [
     location: 'Kacyiru, Kigali',
     status: StatusCategory.forSale,
     estateType: EstateTypeCategory.apartment,
+    imageUrls: [
+      'https://images.unsplash.com/photo-1613977257164-35e0acb2b2d1',
+    ],
   ),
   Estate(
     title: 'Kimironko Apartments',
@@ -207,6 +249,9 @@ final List<Estate> estates = [
     location: 'Kimironko, Kigali',
     status: StatusCategory.booked,
     estateType: EstateTypeCategory.apartment,
+    imageUrls: [
+      'https://images.unsplash.com/photo-1613977257030-5ce7c5dc3cb7',
+    ],
   ),
 
   // === OFFICE ===
@@ -222,6 +267,9 @@ final List<Estate> estates = [
     location: 'Kiyovu, Kigali',
     status: StatusCategory.forRent,
     estateType: EstateTypeCategory.office,
+    imageUrls: [
+      'https://images.unsplash.com/photo-1507679799987-c73779587ccf',
+    ],
   ),
   Estate(
     title: 'Downtown Office Space',
@@ -235,6 +283,9 @@ final List<Estate> estates = [
     location: 'Kigali City Center',
     status: StatusCategory.forSale,
     estateType: EstateTypeCategory.office,
+    imageUrls: [
+      'https://images.unsplash.com/photo-1503387762-592deb58ef4e',
+    ],
   ),
   Estate(
     title: 'Remera Plaza Office',
@@ -248,6 +299,9 @@ final List<Estate> estates = [
     location: 'Remera, Kigali',
     status: StatusCategory.booked,
     estateType: EstateTypeCategory.office,
+    imageUrls: [
+      'https://images.unsplash.com/photo-1581090700227-1e37b190418e',
+    ],
   ),
 
   // === HOTEL ===
@@ -263,6 +317,10 @@ final List<Estate> estates = [
     location: 'Kiyovu, Kigali',
     status: StatusCategory.forRent,
     estateType: EstateTypeCategory.hotel,
+    imageUrls: [
+      'https://images.unsplash.com/photo-1566073771259-6a8506099945',
+      'https://images.unsplash.com/photo-1600585153837-8f982e7fd2b5',
+    ],
   ),
   Estate(
     title: 'Ubumwe Grand Hotel',
@@ -276,6 +334,9 @@ final List<Estate> estates = [
     location: 'Kigali Downtown',
     status: StatusCategory.sold,
     estateType: EstateTypeCategory.hotel,
+    imageUrls: [
+      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c',
+    ],
   ),
   Estate(
     title: 'Heaven Boutique Hotel',
@@ -289,6 +350,9 @@ final List<Estate> estates = [
     location: 'Kiyovu, Kigali',
     status: StatusCategory.forSale,
     estateType: EstateTypeCategory.hotel,
+    imageUrls: [
+      'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde',
+    ],
   ),
 
   // === OTHER ===
@@ -304,6 +368,9 @@ final List<Estate> estates = [
     location: 'Kicukiro, Kigali',
     status: StatusCategory.forRent,
     estateType: EstateTypeCategory.other,
+    imageUrls: [
+      'https://images.unsplash.com/photo-1570129477492-45c003edd2be',
+    ],
   ),
   Estate(
     title: 'Event Venue Space',
@@ -317,6 +384,9 @@ final List<Estate> estates = [
     location: 'Remera, Kigali',
     status: StatusCategory.forSale,
     estateType: EstateTypeCategory.other,
+    imageUrls: [
+      'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4',
+    ],
   ),
   Estate(
     title: 'Storage Warehouse',
@@ -330,5 +400,8 @@ final List<Estate> estates = [
     location: 'Kigali Industrial Zone',
     status: StatusCategory.booked,
     estateType: EstateTypeCategory.other,
+    imageUrls: [
+      'https://images.unsplash.com/photo-1590642914600-9c9a661f74d5',
+    ],
   ),
 ];
