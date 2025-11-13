@@ -75,8 +75,7 @@ class _ExplorePageState extends State<ExplorePage> {
                 "Find Your Dream",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 22,
-                  letterSpacing: 1.8
+                  fontSize: 26,
                 ),
               ),
 
@@ -84,9 +83,8 @@ class _ExplorePageState extends State<ExplorePage> {
                 "Property",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: Colors.blue,
-                  fontSize: 22,
-                  letterSpacing: 1.8
+                  color: Colors.green,
+                  fontSize: 26,
                 ),
               ),
 

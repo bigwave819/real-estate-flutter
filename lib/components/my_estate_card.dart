@@ -23,7 +23,7 @@ class MyEstateCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withValues( alpha: 0.1),
+                  color: Colors.black.withValues(alpha: 0.1),
                   blurRadius: 6,
                   offset: const Offset(0, 3),
                 ),
@@ -54,9 +54,11 @@ class MyEstateCard extends StatelessWidget {
                       left: 10,
                       child: Container(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 10, vertical: 4),
+                          horizontal: 10,
+                          vertical: 4,
+                        ),
                         decoration: BoxDecoration(
-                          color: Colors.white.withValues(alpha:  0.8),
+                          color: Colors.white.withValues(alpha: 0.8),
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Text(
@@ -76,7 +78,7 @@ class MyEstateCard extends StatelessWidget {
                       right: 8,
                       child: Container(
                         decoration: BoxDecoration(
-                          color: Colors.white.withValues(alpha:  0.8),
+                          color: Colors.white.withValues(alpha: 0.8),
                           shape: BoxShape.circle,
                         ),
                         padding: const EdgeInsets.all(6),
@@ -92,25 +94,29 @@ class MyEstateCard extends StatelessWidget {
 
                 // CONTENT BELOW IMAGE
                 Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 5,
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       //Title
-
                       Text(
                         estate.title,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 20
+                          fontSize: 20,
                         ),
                       ),
                       // Location
                       Row(
                         children: [
-                          const Icon(Icons.location_on,
-                              color: Colors.grey, size: 14),
+                          const Icon(
+                            Icons.location_on,
+                            color: Colors.grey,
+                            size: 14,
+                          ),
                           const SizedBox(width: 4),
                           Expanded(
                             child: Text(
@@ -133,25 +139,28 @@ class MyEstateCard extends StatelessWidget {
                         width: 100,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: Colors.grey.shade300
+                          color: Colors.grey.shade300,
                         ),
                         child: Row(
-                        children: [
-                          const Icon(Icons.square_foot,
-                              color: Colors.grey, size: 12),
-                          const SizedBox(width: 4),
-                          Text(
-                            '${estate.area} m²',
-                            style: const TextStyle(
-                              fontSize: 10,
-                              color: Colors.black54,
+                          children: [
+                            const Icon(
+                              Icons.square_foot,
+                              color: Colors.grey,
+                              size: 12,
                             ),
-                          ),
-                        ],
-                      ),
+                            const SizedBox(width: 4),
+                            Text(
+                              '${estate.area} m²',
+                              style: const TextStyle(
+                                fontSize: 10,
+                                color: Colors.black54,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
 
-                      const SizedBox(height: 6,),
+                      const SizedBox(height: 6),
 
                       // Price
                       Text(

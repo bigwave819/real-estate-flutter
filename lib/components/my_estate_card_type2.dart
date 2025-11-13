@@ -60,7 +60,8 @@ class MyEstateCardType2 extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Text(
-                        estate.status.name.toUpperCase(), // ✅ Convert enum to string
+                        estate.status.name
+                            .toUpperCase(), // ✅ Convert enum to string
                         style: const TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.bold,
@@ -148,10 +149,10 @@ class MyEstateCardType2 extends StatelessWidget {
                           width: 30,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
-                            color: Colors.grey.shade200
+                            color: Colors.grey.shade200,
                           ),
-                          child: Icon(Icons.remove_red_eye, size: 15,),
-                        )
+                          child: Icon(Icons.remove_red_eye, size: 15),
+                        ),
                       ],
                     ),
                   ],

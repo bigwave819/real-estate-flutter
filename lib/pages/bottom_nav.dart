@@ -58,10 +58,7 @@ class _BottomNavState extends State<BottomNav> {
             unselectedItemColor: Colors.grey, // optional: inactive color
             backgroundColor: Colors.white,
             items: const [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: 'Home',
-              ),
+              BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
               BottomNavigationBarItem(
                 icon: Icon(Icons.favorite),
                 label: 'Saved',

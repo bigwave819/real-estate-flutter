@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:real_estate/pages/bottom_nav.dart';
 
-class LoginPage extends StatefulWidget {
-  final VoidCallback onTap; // callback to switch to Register
-  const LoginPage({super.key, required this.onTap});
+class RegisterPage extends StatefulWidget {
+  final VoidCallback onTap; // callback to switch to login page
+
+  const RegisterPage({super.key, required this.onTap});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
+  final nameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
   @override
   void dispose() {
+    nameController.dispose();
     emailController.dispose();
     passwordController.dispose();
     super.dispose();
@@ -36,7 +39,7 @@ class _LoginPageState extends State<LoginPage> {
                   borderRadius: BorderRadius.circular(20),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
+                      color: Colors.black.withValues(alpha: 0.1),
                       offset: const Offset(1, 1),
                       blurRadius: 6,
                     ),
@@ -45,7 +48,7 @@ class _LoginPageState extends State<LoginPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Toggle Buttons
+                    // Switch button
                     Container(
                       width: double.infinity,
                       height: 45,
@@ -57,20 +60,6 @@ class _LoginPageState extends State<LoginPage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Container(
-                            width: 200,
-                            height: 35,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            child: const Center(
-                              child: Text(
-                                'Login',
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                          ),
                           GestureDetector(
                             onTap: widget.onTap,
                             child: Container(
@@ -82,21 +71,34 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                               child: const Center(
                                 child: Text(
-                                  'Sign Up',
+                                  'Login',
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: 200,
+                            height: 35,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: const Center(
+                              child: Text(
+                                'Sign Up',
+                                style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                             ),
                           ),
                         ],
                       ),
                     ),
-
                     const SizedBox(height: 20),
 
                     // Welcome text
                     const Text(
-                      'Login Here!',
+                      'Register Here!',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
@@ -104,7 +106,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     const SizedBox(height: 5),
                     const Text(
-                      'Be sure you have created the account \nin order to login here',
+                      'Create your account to get started!',
                       style: TextStyle(
                         fontWeight: FontWeight.w200,
                         color: Color.fromARGB(255, 150, 150, 150),
@@ -112,7 +114,15 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     const SizedBox(height: 20),
 
-                    // Email input
+                    // Name input box
+                    _inputField(
+                      controller: nameController,
+                      hintText: 'Enter your Name',
+                      prefixIcon: Icons.person,
+                    ),
+                    const SizedBox(height: 20),
+
+                    // Email input box
                     _inputField(
                       controller: emailController,
                       hintText: 'Enter your Email',
@@ -120,7 +130,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     const SizedBox(height: 20),
 
-                    // Password input
+                    // Password input box
                     _inputField(
                       controller: passwordController,
                       hintText: 'Enter your Password',
@@ -129,13 +139,14 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     const SizedBox(height: 25),
 
-                    // Login button
+                    // Register button
                     GestureDetector(
                       onTap: () {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const BottomNav()),
+                            builder: (context) => const BottomNav(),
+                          ),
                         );
                       },
                       child: Container(
@@ -146,7 +157,7 @@ class _LoginPageState extends State<LoginPage> {
                           borderRadius: BorderRadius.circular(15),
                         ),
                         child: const Text(
-                          'Login',
+                          'Sign Up',
                           style: TextStyle(
                             fontSize: 18,
                             color: Colors.white,
@@ -157,7 +168,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     const SizedBox(height: 20),
 
-                    // Divider
+                    // Divider with text
                     Row(
                       children: [
                         const Expanded(child: Divider(height: 1)),
@@ -173,7 +184,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     const SizedBox(height: 20),
 
-                    // Login with Google
+                    // Register with Google
                     Container(
                       width: double.infinity,
                       padding: const EdgeInsets.all(10),
@@ -190,7 +201,7 @@ class _LoginPageState extends State<LoginPage> {
                             width: 20,
                           ),
                           const SizedBox(width: 10),
-                          const Text('Login with Google'),
+                          const Text('Register with Google'),
                         ],
                       ),
                     ),
