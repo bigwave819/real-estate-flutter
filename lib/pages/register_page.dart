@@ -39,7 +39,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   borderRadius: BorderRadius.circular(20),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.1),
+                      color: Colors.black.withOpacity(0.1), // Fixed: changed withValues to withOpacity
                       offset: const Offset(1, 1),
                       blurRadius: 6,
                     ),
@@ -48,7 +48,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Switch button
+                    // Switch button - FIXED OVERFLOW
                     Container(
                       width: double.infinity,
                       height: 45,
@@ -57,41 +57,45 @@ class _RegisterPageState extends State<RegisterPage> {
                         color: Colors.grey.shade300,
                         borderRadius: BorderRadius.circular(7),
                       ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          GestureDetector(
-                            onTap: widget.onTap,
-                            child: Container(
-                              width: 200,
-                              height: 35,
-                              decoration: BoxDecoration(
-                                color: Colors.grey.shade300,
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              child: const Center(
-                                child: Text(
-                                  'Login',
-                                  style: TextStyle(fontWeight: FontWeight.bold),
+                      child: LayoutBuilder(
+                        builder: (context, constraints) {
+                          return Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              GestureDetector(
+                                onTap: widget.onTap,
+                                child: Container(
+                                  width: constraints.maxWidth * 0.48, // Use percentage instead of fixed width
+                                  height: 35,
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey.shade300,
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                  child: const Center(
+                                    child: Text(
+                                      'Login',
+                                      style: TextStyle(fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
                                 ),
                               ),
-                            ),
-                          ),
-                          Container(
-                            width: 200,
-                            height: 35,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            child: const Center(
-                              child: Text(
-                                'Sign Up',
-                                style: TextStyle(fontWeight: FontWeight.bold),
+                              Container(
+                                width: constraints.maxWidth * 0.48, // Use percentage instead of fixed width
+                                height: 35,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(5),
+                                ),
+                                child: const Center(
+                                  child: Text(
+                                    'Sign Up',
+                                    style: TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                ),
                               ),
-                            ),
-                          ),
-                        ],
+                            ],
+                          );
+                        },
                       ),
                     ),
                     const SizedBox(height: 20),

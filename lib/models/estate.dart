@@ -61,7 +61,7 @@ final List<Estate> estates = [
     status: StatusCategory.forSale,
     estateType: EstateTypeCategory.land,
     imageUrls: [
-      'https://images.unsplash.com/photo-1580587771525-78b9dba3b914',
+      'https://kigalilife.co.rw/wp-content/uploads/2019/10/453320.jpg',
       'https://images.unsplash.com/photo-1523217582562-09d0def993a6',
       'https://images.unsplash.com/photo-1600585154340-be6161a56a0c',
     ],
@@ -79,7 +79,7 @@ final List<Estate> estates = [
     status: StatusCategory.sold,
     estateType: EstateTypeCategory.land,
     imageUrls: [
-      'https://images.unsplash.com/photo-1526676037777-349b5be1e06b',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE7BYFyk0XGWIeR9vRjtOC73ORwqAP6ESb0Q&s',
       'https://images.unsplash.com/photo-1600585154207-3c9c8a7a3b36',
     ],
   ),
@@ -96,7 +96,7 @@ final List<Estate> estates = [
     status: StatusCategory.booked,
     estateType: EstateTypeCategory.land,
     imageUrls: [
-      'https://images.unsplash.com/photo-1613977257362-3f3e5a2af61f',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqv-ccyR5gAAahIwX9_EUxX0Xyfin7z0-M1A&s',
     ],
   ),
 
@@ -114,7 +114,7 @@ final List<Estate> estates = [
     status: StatusCategory.forSale,
     estateType: EstateTypeCategory.car,
     imageUrls: [
-      'https://images.unsplash.com/photo-1603791452906-bb9cb1e9c24e',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_GgoHRoO6BHtacEHULzOIEHiARh4wqyGiVw&s',
       'https://images.unsplash.com/photo-1617784556270-bc888dfd1a2e',
     ],
   ),
@@ -131,7 +131,7 @@ final List<Estate> estates = [
     status: StatusCategory.sold,
     estateType: EstateTypeCategory.car,
     imageUrls: [
-      'https://images.unsplash.com/photo-1601924579537-371e9b6ecb8b',
+      'https://kigalicarrentals.com/wp-content/uploads/2020/11/4x4-car-hire-rwanda-TXL.jpg',
       'https://images.unsplash.com/photo-1601924579773-2d52c4dbb7d0',
     ],
   ),
@@ -148,7 +148,7 @@ final List<Estate> estates = [
     status: StatusCategory.forRent,
     estateType: EstateTypeCategory.car,
     imageUrls: [
-      'https://images.unsplash.com/photo-1605719125066-6f9a9a6e13b1',
+      'https://kigalicarrentals.com/wp-content/uploads/2021/02/Rwanda-car-rental.jpg',
     ],
   ),
 
@@ -166,7 +166,7 @@ final List<Estate> estates = [
     status: StatusCategory.forSale,
     estateType: EstateTypeCategory.house,
     imageUrls: [
-      'https://images.unsplash.com/photo-1600585154154-3d7f0bb0a3fa',
+      'https://static.wixstatic.com/media/b97df9_087c2309259c461dbffbb48afd5b3fd6~mv2.jpg/v1/fill/w_600,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/b97df9_087c2309259c461dbffbb48afd5b3fd6~mv2.jpg',
       'https://images.unsplash.com/photo-1613977257132-9b63b1f13b8f',
     ],
   ),
@@ -183,7 +183,7 @@ final List<Estate> estates = [
     status: StatusCategory.booked,
     estateType: EstateTypeCategory.house,
     imageUrls: [
-      'https://images.unsplash.com/photo-1580587771525-78b9dba3b914',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8rSttEGK0FVhdow1BDccP-5ieMj7AjuuvvA&s',
     ],
   ),
   Estate(
@@ -218,7 +218,7 @@ final List<Estate> estates = [
     status: StatusCategory.forRent,
     estateType: EstateTypeCategory.apartment,
     imageUrls: [
-      'https://images.unsplash.com/photo-1600585154154-3d7f0bb0a3fa',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThrmJua0j7rWrCtNBq5yNEq4cf0PIJYjJycQ&s',
     ],
   ),
   Estate(
@@ -234,7 +234,7 @@ final List<Estate> estates = [
     status: StatusCategory.forSale,
     estateType: EstateTypeCategory.apartment,
     imageUrls: [
-      'https://images.unsplash.com/photo-1613977257164-35e0acb2b2d1',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLTDJwi5WK4uAZChV35yWFQBv_AEksJnaWug&s',
     ],
   ),
   Estate(
@@ -250,7 +250,7 @@ final List<Estate> estates = [
     status: StatusCategory.booked,
     estateType: EstateTypeCategory.apartment,
     imageUrls: [
-      'https://images.unsplash.com/photo-1613977257030-5ce7c5dc3cb7',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR60Ca7n4rtYEC_gcrRzX8riarHYbII_nErug&s',
     ],
   ),
 
@@ -268,7 +268,7 @@ final List<Estate> estates = [
     status: StatusCategory.forRent,
     estateType: EstateTypeCategory.office,
     imageUrls: [
-      'https://images.unsplash.com/photo-1507679799987-c73779587ccf',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6AsiTUYCQt6hYGCavB9gLHoA5WBvDKH7jig&s',
     ],
   ),
   Estate(
@@ -284,7 +284,7 @@ final List<Estate> estates = [
     status: StatusCategory.forSale,
     estateType: EstateTypeCategory.office,
     imageUrls: [
-      'https://images.unsplash.com/photo-1503387762-592deb58ef4e',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6cfLs99P2n2rjTfaSjY34RW7GhkfRwPRuew&s',
     ],
   ),
   Estate(
@@ -300,7 +300,7 @@ final List<Estate> estates = [
     status: StatusCategory.booked,
     estateType: EstateTypeCategory.office,
     imageUrls: [
-      'https://images.unsplash.com/photo-1581090700227-1e37b190418e',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsblvVYNOLSObZ-oPMEpw8EvQYsjxV-YsHAw&s',
     ],
   ),
 
@@ -318,7 +318,7 @@ final List<Estate> estates = [
     status: StatusCategory.forRent,
     estateType: EstateTypeCategory.hotel,
     imageUrls: [
-      'https://images.unsplash.com/photo-1566073771259-6a8506099945',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4MVAHwWphwJUCfp3qYLN7ShqtTq4cvMkCaA&s',
       'https://images.unsplash.com/photo-1600585153837-8f982e7fd2b5',
     ],
   ),
@@ -335,7 +335,7 @@ final List<Estate> estates = [
     status: StatusCategory.sold,
     estateType: EstateTypeCategory.hotel,
     imageUrls: [
-      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXQbzTnC3SSNLONV5EeAUaeSi0O2sK7sRKNQ&s',
     ],
   ),
   Estate(
@@ -351,7 +351,7 @@ final List<Estate> estates = [
     status: StatusCategory.forSale,
     estateType: EstateTypeCategory.hotel,
     imageUrls: [
-      'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde',
+      'https://cf.bstatic.com/xdata/images/hotel/max1024x768/49612289.jpg?k=e5a6494bd2167922dc5cac14031935a04baaefaa7518b7196e867950d7c9d4a7&o=',
     ],
   ),
 
@@ -369,7 +369,7 @@ final List<Estate> estates = [
     status: StatusCategory.forRent,
     estateType: EstateTypeCategory.other,
     imageUrls: [
-      'https://images.unsplash.com/photo-1570129477492-45c003edd2be',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtnQtDah2a0m7WlFKQwwfprGYvJ2qVWS6DKQ&s',
     ],
   ),
   Estate(
@@ -401,7 +401,7 @@ final List<Estate> estates = [
     status: StatusCategory.booked,
     estateType: EstateTypeCategory.other,
     imageUrls: [
-      'https://images.unsplash.com/photo-1590642914600-9c9a661f74d5',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS03OLsgcEaDgHPxb0wwSubGG0h5VfW0G2HWg&s',
     ],
   ),
 ];

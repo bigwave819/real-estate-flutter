@@ -1,5 +1,3 @@
-// components/estate_tab_view.dart
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import '../models/estate.dart';
 
@@ -34,13 +32,12 @@ class EstateTabView extends StatelessWidget {
     }
 
     return ListView.builder(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+      padding: const EdgeInsets.all(16),
       itemCount: filteredEstates.length,
       itemBuilder: (context, index) {
-        final estate = filteredEstates[index];
         return Padding(
           padding: const EdgeInsets.only(bottom: 20),
-          child: EstateCard(estate: estate),
+          child: EstateCard(estate: filteredEstates[index]),
         );
       },
     );
@@ -55,72 +52,76 @@ class EstateCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 120,
+      height: 160,
+      width: double.infinity,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.08),
+            color: Colors.black.withOpacity(0.08),
             blurRadius: 10,
             offset: const Offset(0, 4),
           ),
         ],
       ),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // IMAGE SECTION
-          ClipRRect(
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(20),
-              bottomLeft: Radius.circular(20),
-            ),
-            child: Image.network(
-              estate.imageUrls.isNotEmpty
-                  ? estate.imageUrls.first
-                  : 'https://via.placeholder.com/400x200',
-              width: 150,
-              height: 200,
-              fit: BoxFit.cover,
+          // LEFT — IMAGE (50% width)
+          Expanded(
+            flex: 1,
+            child: ClipRRect(
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(20),
+                bottomLeft: Radius.circular(20),
+              ),
+              child: Image.network(
+                estate.imageUrls.isNotEmpty
+                    ? estate.imageUrls.first
+                    : 'https://via.placeholder.com/400',
+                height: double.infinity,
+                width: double.infinity,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
 
-          // DETAILS SECTION
+          // RIGHT — CONTENT (50% width)
           Expanded(
+            flex: 1,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+              padding: const EdgeInsets.all(12),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Title and favorite
+                  // TITLE
                   Text(
                     estate.title,
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black87,
-                    ),
+                    maxLines: 1,
                     overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
 
-                  const SizedBox(height: 5),
+                  const SizedBox(height: 6),
+
+                  // LOCATION
                   Row(
                     children: [
-                      const Icon(
-                        Icons.location_on,
-                        size: 16,
-                        color: Colors.grey,
-                      ),
+                      const Icon(Icons.location_on,
+                          size: 14, color: Colors.grey),
                       const SizedBox(width: 4),
                       Expanded(
                         child: Text(
                           estate.location,
-                          style: const TextStyle(
-                            color: Colors.grey,
-                            fontSize: 14,
-                          ),
+                          maxLines: 1,
                           overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: Colors.grey,
+                          ),
                         ),
                       ),
                     ],
@@ -128,36 +129,43 @@ class EstateCard extends StatelessWidget {
 
                   const Spacer(),
 
+                  // PRICE + BUTTON
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        'RWF ${estate.price.toStringAsFixed(0)}',
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.green,
-                        ),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.green.shade600,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 16,
-                            vertical: 8,
+                      Expanded(
+                        child: Text(
+                          "RWF ${_formatPrice(estate.price)}",
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            fontSize: 13,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.green,
                           ),
                         ),
-                        child: const Text(
-                          'View More',
-                          style: TextStyle(color: Colors.white, fontSize: 13),
-                        ),
                       ),
+
+                      SizedBox(
+                        height: 28,
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.green,
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 10),
+                            minimumSize: Size.zero,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                          ),
+                          child: const Text(
+                            "View",
+                            style: TextStyle(fontSize: 10),
+                          ),
+                        ),
+                      )
                     ],
-                  ),
+                  )
                 ],
               ),
             ),
@@ -165,5 +173,11 @@ class EstateCard extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  String _formatPrice(double price) {
+    if (price >= 1000000) return "${(price / 1000000).toStringAsFixed(1)}M";
+    if (price >= 1000) return "${(price / 1000).toStringAsFixed(0)}K";
+    return price.toStringAsFixed(0);
   }
 }
