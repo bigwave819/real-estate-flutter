@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import '../services/auth_services.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
+
+  void signOutUser(BuildContext context) {
+    AuthServices().signOut(context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -75,11 +80,33 @@ class ProfilePage extends StatelessWidget {
                       color: Colors.blue,
                     ),
                     const SizedBox(height: 10),
-                    ProfileNavItem(
-                      icon: Icons.logout,
-                      label: "Logout",
-                      color: Colors.red,
+                    
+                    GestureDetector(
+                      onTap: () => signOutUser(context),
+                      child: Container(
+                        padding: EdgeInsets.all(15),
+                        decoration: BoxDecoration(
+                          color: Colors.red.shade900,
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'SignOut',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 16
+                              ),
+                            ),
+                            const SizedBox(width: 10,),
+                            Icon(Icons.logout, color: Colors.white,)
+                          ],
+                        ),
+                      ),
                     ),
+                    const SizedBox(height: 15,)
                   ],
                 ),
               ),

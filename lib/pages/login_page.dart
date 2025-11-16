@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:real_estate/pages/bottom_nav.dart';
+import 'package:real_estate/services/auth_services.dart';
 
 class LoginPage extends StatefulWidget {
   final VoidCallback onTap; // callback to switch to Register
@@ -12,6 +13,15 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final AuthServices authServices = AuthServices();
+
+  void signInUser() {
+    authServices.signInUser(
+      context: context,
+      email: emailController.text.trim(),
+      password: passwordController.text.trim(),
+    );
+  }
 
   @override
   void dispose() {
@@ -36,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
                   borderRadius: BorderRadius.circular(20),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
+                      color: Colors.black.withValues(alpha: 0.1),
                       offset: const Offset(1, 1),
                       blurRadius: 6,
                     ),
@@ -60,7 +70,9 @@ class _LoginPageState extends State<LoginPage> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Container(
-                                width: constraints.maxWidth * 0.48, // Use percentage instead of fixed width
+                                width:
+                                    constraints.maxWidth *
+                                    0.48, // Use percentage instead of fixed width
                                 height: 35,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
@@ -69,14 +81,18 @@ class _LoginPageState extends State<LoginPage> {
                                 child: const Center(
                                   child: Text(
                                     'Login',
-                                    style: TextStyle(fontWeight: FontWeight.bold),
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 ),
                               ),
                               GestureDetector(
                                 onTap: widget.onTap,
                                 child: Container(
-                                  width: constraints.maxWidth * 0.48, // Use percentage instead of fixed width
+                                  width:
+                                      constraints.maxWidth *
+                                      0.48, // Use percentage instead of fixed width
                                   height: 35,
                                   decoration: BoxDecoration(
                                     color: Colors.grey.shade300,
@@ -85,7 +101,9 @@ class _LoginPageState extends State<LoginPage> {
                                   child: const Center(
                                     child: Text(
                                       'Sign Up',
-                                      style: TextStyle(fontWeight: FontWeight.bold),
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -135,13 +153,7 @@ class _LoginPageState extends State<LoginPage> {
 
                     // Login button
                     GestureDetector(
-                      onTap: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const BottomNav()),
-                        );
-                      },
+                      onTap: signInUser,
                       child: Container(
                         alignment: Alignment.center,
                         padding: const EdgeInsets.symmetric(vertical: 15),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:real_estate/pages/bottom_nav.dart';
+import 'package:real_estate/services/auth_services.dart';
 
 class RegisterPage extends StatefulWidget {
-  final VoidCallback onTap; // callback to switch to login page
+  final VoidCallback onTap;
 
   const RegisterPage({super.key, required this.onTap});
 
@@ -11,9 +11,20 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  final nameController = TextEditingController();
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  final AuthServices authServices = AuthServices();
+
+  void signUpUser() {
+    authServices.signUpUser(
+      context: context,
+      name: nameController.text.trim(),
+      email: emailController.text.trim(),
+      password: passwordController.text.trim(),
+    );
+  }
 
   @override
   void dispose() {
@@ -39,7 +50,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   borderRadius: BorderRadius.circular(20),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.1), // Fixed: changed withValues to withOpacity
+                      color: Colors.black.withOpacity(0.1),
                       offset: const Offset(1, 1),
                       blurRadius: 6,
                     ),
@@ -48,7 +59,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Switch button - FIXED OVERFLOW
+                    // Switch button
                     Container(
                       width: double.infinity,
                       height: 45,
@@ -59,13 +70,15 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                       child: LayoutBuilder(
                         builder: (context, constraints) {
+                          double w = constraints.maxWidth * 0.48;
+
                           return Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
+                              // LOGIN
                               GestureDetector(
                                 onTap: widget.onTap,
                                 child: Container(
-                                  width: constraints.maxWidth * 0.48, // Use percentage instead of fixed width
+                                  width: w,
                                   height: 35,
                                   decoration: BoxDecoration(
                                     color: Colors.grey.shade300,
@@ -74,13 +87,17 @@ class _RegisterPageState extends State<RegisterPage> {
                                   child: const Center(
                                     child: Text(
                                       'Login',
-                                      style: TextStyle(fontWeight: FontWeight.bold),
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ),
                                 ),
                               ),
+
+                              // SIGN UP (ACTIVE)
                               Container(
-                                width: constraints.maxWidth * 0.48, // Use percentage instead of fixed width
+                                width: w,
                                 height: 35,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
@@ -89,7 +106,9 @@ class _RegisterPageState extends State<RegisterPage> {
                                 child: const Center(
                                   child: Text(
                                     'Sign Up',
-                                    style: TextStyle(fontWeight: FontWeight.bold),
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -98,9 +117,9 @@ class _RegisterPageState extends State<RegisterPage> {
                         },
                       ),
                     ),
+
                     const SizedBox(height: 20),
 
-                    // Welcome text
                     const Text(
                       'Register Here!',
                       style: TextStyle(
@@ -108,7 +127,9 @@ class _RegisterPageState extends State<RegisterPage> {
                         fontSize: 18,
                       ),
                     ),
+
                     const SizedBox(height: 5),
+
                     const Text(
                       'Create your account to get started!',
                       style: TextStyle(
@@ -116,9 +137,10 @@ class _RegisterPageState extends State<RegisterPage> {
                         color: Color.fromARGB(255, 150, 150, 150),
                       ),
                     ),
+
                     const SizedBox(height: 20),
 
-                    // Name input box
+                    // Name input
                     _inputField(
                       controller: nameController,
                       hintText: 'Enter your Name',
@@ -126,7 +148,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                     const SizedBox(height: 20),
 
-                    // Email input box
+                    // Email input
                     _inputField(
                       controller: emailController,
                       hintText: 'Enter your Email',
@@ -134,25 +156,19 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                     const SizedBox(height: 20),
 
-                    // Password input box
+                    // Password input
                     _inputField(
                       controller: passwordController,
                       hintText: 'Enter your Password',
                       prefixIcon: Icons.lock,
                       obscureText: true,
                     ),
+
                     const SizedBox(height: 25),
 
                     // Register button
                     GestureDetector(
-                      onTap: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const BottomNav(),
-                          ),
-                        );
-                      },
+                      onTap: signUpUser,
                       child: Container(
                         alignment: Alignment.center,
                         padding: const EdgeInsets.symmetric(vertical: 15),
@@ -170,12 +186,13 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                       ),
                     ),
+
                     const SizedBox(height: 20),
 
-                    // Divider with text
+                    // Divider
                     Row(
                       children: [
-                        const Expanded(child: Divider(height: 1)),
+                        const Expanded(child: Divider()),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8),
                           child: Text(
@@ -183,30 +200,34 @@ class _RegisterPageState extends State<RegisterPage> {
                             style: TextStyle(color: Colors.grey.shade600),
                           ),
                         ),
-                        const Expanded(child: Divider(height: 1)),
+                        const Expanded(child: Divider()),
                       ],
                     ),
+
                     const SizedBox(height: 20),
 
                     // Register with Google
-                    Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        border: Border.all(color: Colors.grey.shade400),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            'images/google.png',
-                            height: 20,
-                            width: 20,
-                          ),
-                          const SizedBox(width: 10),
-                          const Text('Register with Google'),
-                        ],
+                    GestureDetector(
+                      onTap: () {}, // TODO: Google Sign-In
+                      child: Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          border: Border.all(color: Colors.grey.shade400),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              'images/google.png',
+                              height: 20,
+                              width: 20,
+                            ),
+                            const SizedBox(width: 10),
+                            const Text('Register with Google'),
+                          ],
+                        ),
                       ),
                     ),
                   ],
@@ -229,19 +250,19 @@ class _RegisterPageState extends State<RegisterPage> {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(15),
-        border: Border.all(width: 0.9, color: Colors.grey),
+        border: Border.all(width: 0.9, color: Colors.grey.shade400),
       ),
       child: TextField(
         controller: controller,
         obscureText: obscureText,
         decoration: InputDecoration(
-          hintText: hintText,
           prefixIcon: Icon(prefixIcon),
+          hintText: hintText,
+          border: InputBorder.none,
           contentPadding: const EdgeInsets.symmetric(
             horizontal: 20,
             vertical: 18,
           ),
-          border: InputBorder.none,
         ),
       ),
     );
